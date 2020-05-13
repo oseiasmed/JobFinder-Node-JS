@@ -2,11 +2,6 @@ const express = require('express');
 const router  = express.Router();
 const Job     = require('../models/Job');
 
-// rota de teste
-router.get('/test', (req, res) => {
-  res.send('deu certo');
-});
-
 // detalhe da vaga -> view/1, view/2
 router.get('/view/:id', (req, res) => Job.findOne({
   where: {id: req.params.id}
@@ -23,6 +18,13 @@ router.get('/view/:id', (req, res) => Job.findOne({
 router.get('/add', (req, res) => {
   res.render('add');
 })
+
+
+// Ver todas as vagas 
+router.get('/see', (req, res) => {
+  res.render('jobs');
+})
+
 
 // add job via post
 router.post('/add', (req, res) => {

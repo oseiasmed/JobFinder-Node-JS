@@ -8,12 +8,6 @@ const Job        = require('./models/Job');
 const Sequelize  = require('sequelize');
 const Op         = Sequelize.Op;
 
-const PORT = 3000;
-
-app.listen(PORT, function() {
-  console.log(`O Express está rodando na porta ${PORT}`);
-});
-
 // body parser
 app.use(bodyParser.urlencoded({ extended: false }));
 
@@ -39,7 +33,7 @@ db
 app.get('/', (req, res) => {
 
   let search = req.query.job;
-  let query  = '%'+search+'%'; // PH -> PHP, Word -> Wordpress, press -> Wordpress
+  let query  = '%'+search+'%';
 
   if(!search) {
     Job.findAll({order: [
@@ -76,3 +70,9 @@ app.get('/', (req, res) => {
 
 // jobs routes
 app.use('/jobs', require('./routes/jobs'));
+
+const PORT = 3000;
+
+app.listen(PORT, function() {
+  console.log(`O Express está rodando na porta ${PORT}`);
+});

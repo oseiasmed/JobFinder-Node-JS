@@ -1,8 +1,9 @@
-const Sequelize = require('sequelize');
+const Sequelize = require("sequelize");
 
-const sequelize = new Sequelize({
-  dialect: 'sqlite',
-  storage: './db/app.db'
+const connection = new Sequelize('job_finder', 'root', '', {
+    host: 'localhost',
+    dialect: 'mysql',
+    timezone: "+03:00"
 });
 
-module.exports = sequelize
+module.exports = connection;
